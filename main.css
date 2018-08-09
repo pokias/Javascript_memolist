@@ -1,0 +1,23 @@
+
+body {
+    background-color: lightblue;
+    max-width: 600px;
+    margin: auto;
+    padding: 10px;
+}
+
+.list{
+      width: 100%;
+      padding: 12px 20px;
+      margin: 8px 0;
+      display: inline-block;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+      box-sizing: border-box;
+  }
+
+
+
+.HiddenButton {
+display: none;
+}
