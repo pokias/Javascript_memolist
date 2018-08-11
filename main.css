@@ -6,7 +6,7 @@ body {
     padding: 10px;
 }
 
-.list{
+#List{
       width: 100%;
       padding: 12px 20px;
       margin: 8px 0;
@@ -16,10 +16,10 @@ body {
       box-sizing: border-box;
   }
 
-.HiddenButton {
+#HiddenButton {
 // display: none;
 }
 
-.Header1 {
+#Header1 {
     text-align: center;
 }
