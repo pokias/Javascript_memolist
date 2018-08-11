@@ -5,7 +5,7 @@
 	<link rel="stylesheet" href="main.css">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0" charset="UTF-8">
 </head>
-<body>
+<body onload="checkCookie()">
 <p><h2 id="Header1">Muistilista</h2></p>
 
 <div>
@@ -15,7 +15,8 @@
 
 <div>
 <input type="text" id=List>
-<button id="HiddenButton" onclick="AddLineFunction()">Submit </button>
+<button id="HiddenButton" class="myButton" onclick="AddLineFunction()">Submit </button>
+<button id="DeleteCookies" class="myButton" onclick="DeleteCookies()">Delete List </button>
 </div>
 
 </body>
