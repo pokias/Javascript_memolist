@@ -21,7 +21,6 @@ function getCookie() {
 function checkCookie() {
  if (document.cookie != "") {
 	 getCookie();
-	 window.alert(document.cookie);
  }
 };
 
