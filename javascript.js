@@ -1,20 +1,27 @@
+// Keksi pohjainen ratkaisu
+// vaihtoehtona olisi tietokanta toteutus
+// Keksit säilyvät kyseisen istunnon ajan
+// TODO mahdollisuus tallentaa muistilista käyttäjän koneelle
+// TODO Lisätä oma Muistilista
 
+// Tällä hetkellä vain viimeisin input säilyy
+// TODO sisällön sanitointi
 function getCookie() {
-		var decodedCookie = decodeURIComponent(document.cookie);
-		var ca = decodedCookie.split(';');
-    for(var i = 0; i < ca.length; i++) {
-        var c = ca[i];
+			var ca =document.cookie
+    for(var i = 0; i < ca; i++) {
+        var c = ca;
 				var textnode = document.createTextNode(c);
 				var node = document.createElement("LI");
-      //  while () {
 					node.appendChild(textnode);
 					document.getElementById("list_output").appendChild(node);
         }
     };
 
+
 function checkCookie() {
  if (document.cookie != "") {
 	 getCookie();
+	 window.alert(document.cookie);
  }
 };
 
@@ -35,8 +42,9 @@ function AddLineFunction() {
 
 }
 
-// Enter to submit line
-// TODO korjaa
+// Enterillä lähettää inputin
+// Ei toimi tällä hetkellä
+// TODO  korjaus
 var input = document.getElementById("List");
 input.addEventListener("keyup", function(event) {
     event.preventDefault();
