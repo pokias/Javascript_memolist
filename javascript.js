@@ -48,13 +48,13 @@ function AddLineFunction(listitem) {
 		SetCookie(CookieArray);
 }
 
-function SaveCookies(text, name, type) {
-  var a = document.getElementById("List");
-  var file = new Blob([text], {type: type});
-  a.href = URL.createObjectURL(file);
-  a.download = name;
-}
+function SaveCookies() {
+	var blob = new Blob(CookieArray, {type: "text/plain;charset=utf-8"});
+	var blobUrl = URL.createObjectURL(blob);
+	document.getElementById("Download").href = blobUrl
+	document.getElementById("Download").download = "Muistilista.txt"
 
+}
 
 // Enterillä lähettää inputin
 // Ei toimi tällä hetkellä
