@@ -3,18 +3,24 @@
 // Keksit säilyvät kyseisen istunnon ajan
 // TODO mahdollisuus tallentaa muistilista käyttäjän koneelle
 // TODO Lisätä oma Muistilista
+		var CookieArray = [];
 
-// Tällä hetkellä vain viimeisin input säilyy
+
+		function SetCookie(CookieArray){
+			document.cookie = CookieArray.join();
+		}
+
 // Valmis kirjasta sanitointiin.
-function getCookie() {
-			var ca = document.cookie
+function getCookie(ca) {
+			var ca = document.cookie.split(",");
     for(var i = 0; i < ca.length; i++) {
         var c = ca;
-				var textnode = document.createTextNode(c);
+				var textnode = document.createTextNode(c[i]);
 				var node = document.createElement("LI");
 					node.appendChild(textnode);
 					document.getElementById("list_output").appendChild(node);
         }
+					CookieArray.push(ca);
     };
 
 
@@ -30,19 +36,25 @@ function DeleteCookies(){
 }
 
 
-function AddLineFunction() {
+function AddLineFunction(listitem) {
 		var listitem = document.getElementById("List").value;
-		// ota lisätyt linjat ja luo niistä array jonka laittaa lopuksi document.cookie:hen
-		document.cookie = listitem;
+		CookieArray.push(listitem);
 		document.getElementById("List").value = "";
 		document.getElementById("List").focus();
     var node = document.createElement("LI");
     var textnode = document.createTextNode(listitem);
     node.appendChild(textnode);
     document.getElementById("list_output").appendChild(node);
-
-
+		SetCookie(CookieArray);
 }
+
+function SaveCookies(text, name, type) {
+  var a = document.getElementById("List");
+  var file = new Blob([text], {type: type});
+  a.href = URL.createObjectURL(file);
+  a.download = name;
+}
+
 
 // Enterillä lähettää inputin
 // Ei toimi tällä hetkellä
