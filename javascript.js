@@ -1,14 +1,14 @@
-// Keksi pohjainen ratkaisu
+// Eväste pohjainen ratkaisu
 // vaihtoehtona olisi tietokanta toteutus
 // Keksit säilyvät kyseisen istunnon ajan
 // TODO mahdollisuus tallentaa muistilista käyttäjän koneelle
 // TODO Lisätä oma Muistilista
 
 // Tällä hetkellä vain viimeisin input säilyy
-// TODO sisällön sanitointi
+// Valmis kirjasta sanitointiin.
 function getCookie() {
-			var ca =document.cookie
-    for(var i = 0; i < ca; i++) {
+			var ca = document.cookie
+    for(var i = 0; i < ca.length; i++) {
         var c = ca;
 				var textnode = document.createTextNode(c);
 				var node = document.createElement("LI");
@@ -32,12 +32,15 @@ function DeleteCookies(){
 
 function AddLineFunction() {
 		var listitem = document.getElementById("List").value;
+		// ota lisätyt linjat ja luo niistä array jonka laittaa lopuksi document.cookie:hen
 		document.cookie = listitem;
 		document.getElementById("List").value = "";
+		document.getElementById("List").focus();
     var node = document.createElement("LI");
     var textnode = document.createTextNode(listitem);
     node.appendChild(textnode);
     document.getElementById("list_output").appendChild(node);
+
 
 }
 
