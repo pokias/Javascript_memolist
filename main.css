@@ -4,6 +4,7 @@ body {
     max-width: 600px;
     margin: auto;
     padding: 10px;
+    font-size:150%;
 }
 
 #List{
@@ -14,12 +15,15 @@ body {
       border: 1px solid #ccc;
       border-radius: 4px;
       box-sizing: border-box;
+
   }
 
-#HiddenButton {
-/* Lähetyspainike piilotetaan kun enterillä input toimii
-  display: none;
-*/
+
+.RemoveIcon {
+  cursor: pointer;
+  float: right;
+  vertical-align: text-bottom;
+  border-radius: 8px;
 }
 
 #Header1 {
@@ -27,7 +31,7 @@ body {
 }
 
 
-/* Nappien CSS tehnyt
+/* Painikkeen CSS tehnyt
  https://www.bestcssbuttongenerator.com/#/9
  */
 .myButton {
