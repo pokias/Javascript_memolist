@@ -5,7 +5,6 @@
 // TODO Lisätä oma Muistilista
 		var IdNumber = 0; //Tietyn linen poistamista varten
 		var CookieArray = [];
-// kuvalle ID, laita sama ID Linelle, klikkaa poisto kuvaa -> hae sen id tuotos ja poista kuva että line
 
 
 		function SetCookie(CookieArray){
@@ -17,10 +16,18 @@ function getCookie(ca) {
 			var ca = document.cookie.split(",");
     for(var i = 0; i < ca.length; i++) {
         var c = ca;
+				var TrashPicture = document.createElement("IMG");
+				TrashPicture.setAttribute("src", "m.jpg");
+				TrashPicture.setAttribute("alt", "Remove Line");
+				TrashPicture.setAttribute("class", "RemoveIcon");
+				TrashPicture.setAttribute("onclick","RemoveLine(this.id)");
 				var textnode = document.createTextNode(c[i]);
 				var node = document.createElement("LI");
 					node.appendChild(textnode);
+					node.appendChild(TrashPicture).setAttribute("id", IdNumber);
 					document.getElementById("list_output").appendChild(node);
+					document.getElementById("list_output").appendChild(node).setAttribute("id",IdNumber);
+					IdNumber++;
         }
 					CookieArray.push(ca);
     };
@@ -44,8 +51,8 @@ function DeleteCookies(){
 	location.reload();
 }
 
-function AddLineFunction(listitem) {
-		// TODO Fiksumpi tapa
+function AddLineFunction(listitem, id) {
+		// TODO Smarte way, function?
 		var TrashPicture = document.createElement("IMG");
 		TrashPicture.setAttribute("src", "m.jpg");
 		TrashPicture.setAttribute("alt", "Remove Line");
@@ -65,14 +72,12 @@ function AddLineFunction(listitem) {
 		SetCookie(CookieArray);
 }
 
-function RemoveLine(id){
-	alert(id);
-	var elem = document.getElementById(id);
+function RemoveLine(clicked_id){
+	var elem = document.getElementById(clicked_id);
 	elem.parentNode.removeChild(elem);
+	CookieArray.splice(clicked_id, 1);
+	SetCookie(CookieArray);
 }
-
-
-
 
 
 // Enterillä lähettää inputin
