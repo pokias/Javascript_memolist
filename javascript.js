@@ -28,8 +28,8 @@ function getCookie(ca) {
 					document.getElementById("list_output").appendChild(node);
 					document.getElementById("list_output").appendChild(node).setAttribute("id",IdNumber);
 					IdNumber++;
+					CookieArray.push(c[i]);
         }
-					CookieArray.push(ca);
     };
 
 
