@@ -1,4 +1,4 @@
-# js
-Js test
+# Javascript memolist w/ cookies
+My first javascript project.
 
-Memolist made in js and its WIP, in end i will build app out of it.
+
