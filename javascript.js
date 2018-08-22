@@ -1,9 +1,8 @@
-// Eväste pohjainen ratkaisu
-// vaihtoehtona olisi tietokanta toteutus
-// Keksit säilyvät kyseisen istunnon ajan
-// TODO mahdollisuus tallentaa muistilista käyttäjän koneelle
-// TODO Lisätä oma Muistilista
-		var IdNumber = 0; //Tietyn linen poistamista varten
+// Cookie based solution
+// Another option would be Database
+// Cookies now only survive default ammount of time
+
+		var IdNumber = 0; //To ID lines for removing or editing them
 		var CookieArray = [];
 
 
@@ -11,13 +10,13 @@
 			document.cookie = CookieArray.join();
 		}
 
-// Valmis kirjasto sanitointiin.
+// Use existing libary for sanitize
 function getCookie(ca) {
 			var ca = document.cookie.split(",");
     for(var i = 0; i < ca.length; i++) {
         var c = ca;
 				var TrashPicture = document.createElement("IMG");
-				TrashPicture.setAttribute("src", "m.jpg");
+				TrashPicture.setAttribute("src", "m.jpg"); // Place holder image, made in paint
 				TrashPicture.setAttribute("alt", "Remove Line");
 				TrashPicture.setAttribute("class", "RemoveIcon");
 				TrashPicture.setAttribute("onclick","RemoveLine(this.id)");
@@ -34,6 +33,7 @@ function getCookie(ca) {
 
 
 function checkCookie() {
+		document.getElementById("List").focus();
  if (document.cookie != "") {
 	 getCookie();
  }
@@ -52,9 +52,9 @@ function DeleteCookies(){
 }
 
 function AddLineFunction(listitem, id) {
-		// TODO Smarte way, function?
+		// TODO Smarte way, function? For future smarter dev
 		var TrashPicture = document.createElement("IMG");
-		TrashPicture.setAttribute("src", "m.jpg");
+		TrashPicture.setAttribute("src", "m.jpg"); // Place holder image, made in paint
 		TrashPicture.setAttribute("alt", "Remove Line");
 		TrashPicture.setAttribute("class", "RemoveIcon");
 		TrashPicture.setAttribute("onclick","RemoveLine(this.id)");
@@ -80,13 +80,15 @@ function RemoveLine(clicked_id){
 }
 
 
-// Enterillä lähettää inputin
-// Ei toimi tällä hetkellä
-// TODO  korjaus
+
+
+// Enter sends input so you dont need to click button, its launched first time user selects input field
+function EnterEventListener() {
 var input = document.getElementById("List");
 input.addEventListener("keyup", function(event) {
     event.preventDefault();
     if (event.keyCode === 13) {
-        AddLineFunction();
+        document.getElementById("HiddenButton").click();
     }
 });
+}
